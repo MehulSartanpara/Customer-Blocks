@@ -1,0 +1,102 @@
+# Learn more about configuring your Customer account UI extension:
+# https://shopify.dev/api/customer-account-ui-extensions/unstable/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-07"
+
+[[extensions]]
+name = "Banner"
+handle = "banner"
+type = "ui_extension"
+
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/OrderStatusBlock.jsx"
+target = "customer-account.order-status.block.render"
+
+[[extensions.targeting]]
+module = "./src/OrderIndexBlock.jsx"
+target = "customer-account.order-index.block.render"
+
+[[extensions.targeting]]
+module = "./src/ProfileBlock.jsx"
+target = "customer-account.profile.block.render"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner Title"
+description = "Enter the title for the banner"
+
+[[extensions.settings.fields]]
+key = "banner_description"
+type = "multi_line_text_field"
+name = "Banner Description"
+description = "Enter the description for the banner. You can include a link in the description using the format {{linkLabel|Link}}. For example, {{Terms and Conditions|https://www.google.com}}."
+
+[[extensions.settings.fields]]
+key = "collapsible"
+type = "boolean"
+name = "Collapsible Description"
+description = "Allow customers to expand or collapse the banner description"
+
+[[extensions.settings.fields]]
+key = "status"
+type = "single_line_text_field"
+name = "Banner Status"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = "[\"info\", \"success\", \"warning\", \"critical\"]"
+
+[[extensions.settings.fields]]
+key = "description_size"
+type = "single_line_text_field"
+name = "Banner Description Font Size"
+description = "Select the font size for the banner description"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = "[\"extraSmall\", \"small\", \"base\", \"large\", \"extraLarge\", \"medium\"]"
+
+[[extensions.settings.fields]]
+key = "description_color"
+type = "single_line_text_field"
+name = "Banner Description Font Color"
+description = "Select the font color for the banner description"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"
+
+[[extensions.settings.fields]]
+key = "description_emphasis"
+type = "single_line_text_field"
+name = "Banner Description Font Weight"
+description = "Select the font weight for the banner description"
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = "[\"normal\", \"italic\", \"bold\"]"
+
+[[extensions.settings.fields]]
+key = "description_link_color"
+type = "single_line_text_field"
+name = "Banner Description Link Color"
+description = "Choose the color for the links in the banner description."
+[[extensions.settings.fields.validations]]
+name = "choices"
+value = "[\"base\", \"accent\", \"decorative\", \"interactive\", \"subdued\", \"info\", \"success\", \"warning\", \"critical\", \"monochrome\"]"

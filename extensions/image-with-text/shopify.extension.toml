@@ -1,0 +1,112 @@
+# Learn more about configuring your Customer account UI extension:
+# https://shopify.dev/api/customer-account-ui-extensions/unstable/configuration
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2025-07"
+
+[[extensions]]
+name = "Image with text"
+handle = "image-with-text"
+type = "ui_extension"
+
+
+# Controls where in Shopify your extension will be injected,
+# and the file that contains your extension’s source code. Learn more:
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/extension-targets-overview
+
+[[extensions.targeting]]
+module = "./src/OrderStatusBlock.jsx"
+target = "customer-account.order-status.block.render"
+
+[[extensions.targeting]]
+module = "./src/OrderIndexBlock.jsx"
+target = "customer-account.order-index.block.render"
+
+[[extensions.targeting]]
+module = "./src/ProfileBlock.jsx"
+target = "customer-account.profile.block.render"
+
+[extensions.capabilities]
+# Gives your extension access to directly query Shopify’s storefront API.
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/configuration#api-access
+api_access = true
+
+# Gives your extension access to make external network calls, using the
+# JavaScript `fetch()` API. Learn more:
+# https://shopify.dev/docs/api/customer-account-ui-extensions/unstable/configuration#network-access
+# network_access = true
+
+[extensions.settings]
+
+# 👇 Image column width setting (percent as string, e.g., "40")
+[[extensions.settings.fields]]
+key = "image_column_width"
+type = "single_line_text_field"
+name = "Image Column Width"
+description = "Enter image column width as percentage (e.g., 40)"
+
+# 👇 Image URL
+[[extensions.settings.fields]]
+key = "image_url"
+type = "single_line_text_field"
+name = "Image URL"
+description = "Upload your image to Files and paste the URL here"
+
+# 👇 Heading
+[[extensions.settings.fields]]
+key = "heading"
+type = "single_line_text_field"
+name = "Heading"
+description = "Main heading text"
+
+# 👇 Tags
+[[extensions.settings.fields]]
+key = "tag_1"
+type = "single_line_text_field"
+name = "Tag 1"
+description = "Enter the first tag"
+
+[[extensions.settings.fields]]
+key = "tag_2"
+type = "single_line_text_field"
+name = "Tag 2"
+description = "Enter the second tag"
+
+[[extensions.settings.fields]]
+key = "tag_3"
+type = "single_line_text_field"
+name = "Tag 3"
+description = "Enter the third tag"
+
+# 👇 Multi-line Paragraph Inputs
+[[extensions.settings.fields]]
+key = "multiline_content"
+type = "multi_line_text_field"
+name = "Content Block"
+description = "Enter multiline content"
+
+# 👇 Buttons
+[[extensions.settings.fields]]
+key = "button_1_label"
+type = "single_line_text_field"
+name = "Primary Button Label"
+description = "Text shown on the first button"
+
+[[extensions.settings.fields]]
+key = "button_1_url"
+type = "single_line_text_field"
+name = "Primary Button URL"
+description = "Destination URL for the first button"
+
+[[extensions.settings.fields]]
+key = "button_2_label"
+type = "single_line_text_field"
+name = "Secondary Button Label"
+description = "Text shown on the second button"
+
+[[extensions.settings.fields]]
+key = "button_2_url"
+type = "single_line_text_field"
+name = "Secondary Button URL"
+description = "Destination URL for the second button"

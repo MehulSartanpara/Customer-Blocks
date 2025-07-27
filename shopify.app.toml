@@ -3,11 +3,12 @@
 client_id = "f3498964563910adbea2cbb95fe01d2b"
 name = "Customer Account Blocks"
 handle = "customer-account-blocks"
-application_url = "https://example.com/"
+application_url = "https://charles-manner-alter-categories.trycloudflare.com"
 embedded = true
 
 [build]
 include_config_on_deploy = true
+automatically_update_urls_on_dev = true
 
 [webhooks]
 api_version = "2025-07"
@@ -25,7 +26,7 @@ api_version = "2025-07"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = ["https://charles-manner-alter-categories.trycloudflare.com/auth/callback", "https://charles-manner-alter-categories.trycloudflare.com/auth/shopify/callback", "https://charles-manner-alter-categories.trycloudflare.com/api/auth/callback"]
 
 [pos]
 embedded = false
